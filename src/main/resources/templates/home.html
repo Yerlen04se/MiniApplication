@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Yerlen's Home Page</title>
+    <style>
+        body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+	box-sizing: border-box;
+}
+
+.container {
+	max-width: 1120px;
+	width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+	background-color: #f4f4f4;
+	display: block;
+}
+
+.logo {
+	height: 46.68px;
+	width: 129.94px;
+}
+
+.flexible {
+	display: flex;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: ##f4f4f4;
+  margin-left: auto;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+  color: #f4f4f4;
+}
+
+.photo {
+	height: 461px;
+}
+
+.first {
+	margin-right: auto;
+	padding-top: 100px;
+}
+
+.second {
+	margin-left: auto;
+}
+
+h1 {
+	font-size: 39px;
+}
+
+.main-text {
+	font-size: 18px;
+}
+
+.pos {
+	padding-top: 70px;
+}
+
+.second-block {
+	padding-top: 100px;
+}
+
+.mini-header {
+	font-size: 12px;
+	padding-right: 30px;
+	text-decoration: none;
+	color: #7B11F5;
+	position: relative;
+	bottom: 7px;
+}
+
+.mini-header-second {
+	margin-left: auto;
+	padding-top: 10px;
+	font-size: 14px;
+}
+
+.cards-pos {
+	padding-top: 50px;
+}
+
+.card {
+	max-width: 352px;
+	height: 180px;
+	width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+	background-color: #f4f4f4;
+	display: block;
+	border-radius: 20px;
+	border: 1px solid #D9D9D9;
+}
+
+.card-pos {
+	margin-right: 50px;
+}
+
+.card-long {
+	margin-top: 16px;
+	max-width: 1120px;
+	height: 180px;
+	width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+	background-color: #f4f4f4;
+	display: block;
+	border-radius: 20px;
+	border: 1px solid #D9D9D9;
+}
+
+.third-block-header-pos {
+	margin-right: auto;
+	font-size: 14px;
+}
+
+.third-block {
+	padding-top: 100px;
+}
+
+.mini-header-third {
+	font-size: 12px;
+	padding-right: 70px;
+	text-decoration: none;
+	color: #7B11F5;
+	position: relative;
+	bottom: 7px;
+}
+
+.h2-third {
+	margin: 0px;
+}
+
+.big-card-pos {
+	padding-top: 50px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.platform {
+	max-width: 535px;
+	height: 49px;
+	width: 100%;
+    box-sizing: border-box;
+	background-color: #7B11F5;
+	display: block;
+	border-radius: 20px 20px 0 0;
+	border: 1px solid #D9D9D9;
+	z-index: 0;
+}
+
+.main-information {
+	max-width: 535px;
+	height: 296px;
+	width: 100%;
+    box-sizing: border-box;
+	background-color: #f4f4f4;
+	display: block;
+	border-radius: 20px 20px 20px 20px;
+	border: 5px solid #D9D9D9;
+	z-index: 1;
+	position: relative;
+	bottom: 20px;
+}
+
+.platform-text {
+	display: flex;
+	justify-content: center;
+	color: #f4f4f4;
+	position: relative;
+	top: 5px;
+}
+
+.card-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.big-card {
+	max-width: 535px;
+	width: 100%;
+    box-sizing: border-box;
+	background-color: #f4f4f4;
+	display: block;
+	border-radius: 20px 20px 20px 20px;
+}
+
+.big-card-p {
+	margin-left: 10px;
+}
+
+.forth-block {
+	padding-top: 50px;
+}
+
+.mini-header-forth-block {
+	font-size: 12px;
+	text-decoration: none;
+	color: #7B11F5;
+	position: relative;
+	padding-left: 66px;
+}
+
+.h2-forth {
+	position: relative;
+	left: 208px;
+	bottom: 90px;
+}
+
+.tipa-rectangle {
+	max-width: 668px;
+	height: 467px;
+	width: 100%;
+    box-sizing: border-box;
+	background-color: #EAEAEA;
+	display: block;
+}
+
+.triangle-topleft {
+    width: 0;
+    height: 0;
+    border-top: 100px solid white;
+    border-right: 100px solid transparent;
+}
+
+.forth-block-container {
+	max-width: 850px;
+	width: 100%;
+	margin-right: 0;
+    box-sizing: border-box;
+	background-color: #1C1C1C;
+	display: block;
+}
+
+.noga {
+	margin-left: auto;
+}
+
+.time-and-social {
+	position: relative;
+	left: 208px;
+	top: 200px;
+}
+
+.timestamp {
+	font-size: 32px;
+	color: #7B11F5;
+}
+
+.icon {
+	width: 30px;
+}
+
+.icon-p {
+	margin-left: 10px;
+}
+
+.social {
+	margin: auto;
+	position: relative;
+	right: 60px;
+}
+
+.textarea-s {
+	resize: none;
+	background-color: #1C1C1C;
+	border-radius: 5px;
+	width: 550px;
+	height: 146px;
+	margin-top: 5px;
+	color: #f4f4f4;
+}
+
+.formochki {
+	width: 265px;
+	height: 32px;
+	background-color: #1C1C1C;
+	border-radius: 5px;
+	border-style: solid;
+	position: relative;
+	margin-top: 5px;
+	color: #f4f4f4;
+}
+
+.form-text {
+	color: #f4f4f4;
+}
+
+.form-p {
+	padding-top: 30px;
+	padding-left: 70px;
+}
+
+.dividing {
+	margin-right: 20px;
+}
+
+.checkbox-p {
+	margin-top: 10px;
+}
+
+.but {
+	color: white;
+	background-color: #7B11F5;
+	border: 5px solid #7B11F5;
+	border-radius: 5px;
+}
+
+.but-s-p {
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+
+.checkbox-s {
+	width: 20px;
+	height: 20px;
+	background-color: #990000;
+	accent-color: #34495e;
+}
+
+.checkbox-text {
+	margin: 0 auto;
+	position: relative;
+	bottom: 5px;
+}
+    </style>
+</head>
+<body>
+
+<h2>luv2code Company Home Page</h2>
+<hr/>
+<p>
+    Welcome to the luv2code company home page!
+</p>
+
+<hr/>
+
+<!-- display username and role -->
+
+<p>
+    User: <span sec:authentication="principal.username"></span>
+    <br/>
+    Role(s): <span sec:authentication="principal.authorities"></span>
+</p>
+
+<hr/>
+
+<div class="forth-block flexible">
+
+    <div class="tipa-rectangle">
+
+        <div class="triangle-topleft"></div>
+
+        <h2 class="h2-forth">Наше вдохновение -<br/>ваш успех<a href="#" class="mini-header-forth-block">Контакты</a></h2>
+
+        <div class="time-and-social flexible">
+
+            <div>
+
+                <span>Локальное время:</span>
+                <br/>
+                <span class="timestamp"><strong>18:00</strong></span>
+
+            </div>
+
+            <div class="social">
+
+                <a href="#"><img src="img/instagram.svg" class="icon"/></a>
+                <a href="#"><img src="img/telegram.svg" class="icon icon-p"/></a>
+                <a href="#"><img src="img/whatsapp.svg" class="icon icon-p"/></a>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <div class="forth-block-container">
+
+        <div class="forth-block-container">
+
+            <div class="form-p">
+
+                <form th:action="@{/saveRequest}" th:object="${request}" method="post">
+
+                    <input type="hidden" th:field="*{id}">
+
+                    <div class="flexible">
+
+                        <div class="dividing">
+                            <label for="fname" class="form-text">Название продукта</label><br>
+                            <input type="text" id="fname" name="fname" required th:field="*{productName}" placeholder="Название продукта" class="formochki"><br>
+                        </div>
+
+                        <div>
+                            <label for="phoneNumber" class="form-text">Количество продукта</label><br>
+                            <input type="text" id="phoneNumber" name="phoneNumber" required th:field="*{count}" placeholder="0" class="formochki"><br>
+                        </div>
+
+                    </div><br>
+
+                    <div class="flexible">
+
+                        <div class="dividing">
+                            <label for="email" class="form-text">Адрес доставки</label><br>
+                            <input type="text" id="email" name="service" th:field="*{address}" placeholder="address" class="formochki"><br>
+                        </div>
+
+                        <div>
+                            <label for="service" class="form-text">Номер телефона</label><br>
+                            <input type="text" id="service" name="service" th:field="*{phoneNumber}" placeholder="+*(***)*** **-**" class="formochki"><br><br>
+                        </div>
+
+                    </div>
+
+                    <input type="submit" value="Отправить" class="but but-s-p">
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div sec:authorize="hasRole('MANAGER')">
+
+    <p>
+        <a th:href="@{/listOfRequests}">List of Requests</a>
+        (Only for Manager peeps)
+    </p>
+
+</div>
+
+<div sec:authorize="hasRole('ADMIN')">
+
+    <p>
+        <a th:href="@{/listOfUsers}">List of Users</a>
+        (Only for Admin peeps)
+    </p>
+
+</div>
+
+<div sec:authorize="hasRole('ADMIN')">
+
+    <p>
+        <a th:href="@{/register}">Register user</a>
+        (Only for Admin peeps)
+    </p>
+
+</div>
+
+<hr/>
+
+<form action="#" th:action="@{/logout}" method="POST">
+
+    <input type="submit" value="Logout" />
+
+</form>
+
+</body>
+</html>
